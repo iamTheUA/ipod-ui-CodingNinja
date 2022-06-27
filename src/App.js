@@ -35,7 +35,6 @@ class App extends React.Component {
     let step = this.state.step;
     myRegion.bind(parent, 'rotate', (event)=>{
 
-      var self = this;
       let change = event.detail.distanceFromLast;
       if(change>3){
         step +=1 ;
@@ -46,7 +45,7 @@ class App extends React.Component {
       if( step===4) step=0;
       if(step<0) step=3;
       
-      self.setState({ step: step})
+      this.setState({ step: step})
     },false)
   }
 
@@ -79,7 +78,7 @@ class App extends React.Component {
                 
         </div>
 
-        <div id='controller' className='controller' style={style.contoller} onMouseDown={this.rotateWheel} >
+        <div id='controller' className='controller' style={style.contoller} onMouseDown={()=>this.rotateWheel()} >
           <div style={ {marginLeft:'40px', height:'40px', width:'40px'}} onClick={this.menuButton}>
           </div>
         </div>
